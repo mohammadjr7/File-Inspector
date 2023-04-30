@@ -17,25 +17,24 @@ log_levels: dict = {"info": "[INFO]"
             ,"error": "[ERROR]"
             ,"start": "[START]"
             ,"end": "[END]"}
-log_file: str = str()
-log_file_name: str = str()
-new_line: str = "\r\n"
+_log_file: str = str()
+NEW_LINE: str = "\r\n"
 
 # Methods
 # Method [do log]
 def log(level, message):
-    global log_file
+    global _log_file
     try:
-        log_file = open(f"logs/{level.lower()}.log", "a")
+        _log_file = open(f"logs/{level.lower()}.log", "a")
     except FileNotFoundError:
         print(log_levels["info"], "Directory [logs] not found! Try to create.")
         logger_mkdir()
-        log_file = open(f"logs/{level.lower()}.log", "w")
+        _log_file = open(f"logs/{level.lower()}.log", "w")
 
-    log_file.write(f"{datetime.datetime.now()} - {message}{new_line}")
-    log_file.close()
+    _log_file.write(f"{datetime.datetime.now()} - {message}{NEW_LINE}")
+    _log_file.close()
 
-    del log_file
+    del _log_file
 
 
 # Method [make directory for logs]
