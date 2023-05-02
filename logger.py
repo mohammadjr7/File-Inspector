@@ -33,6 +33,7 @@ def log(level, message):
 
     _log_file.write(f"{datetime.datetime.now()} - {message}{NEW_LINE}")
     _log_file.close()
+    print(f"{datetime.datetime.now()} - {level} {message}")
 
     del _log_file
 
