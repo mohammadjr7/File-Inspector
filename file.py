@@ -6,9 +6,9 @@
 
 This class is intended for handling file I/O operations.
 """
+
 # Project configs
 from config import *
-
 # Project modules
 from logger import *
 
@@ -39,7 +39,7 @@ class File():
             self._file.write(f"This is an auto generated message from {APP_NAME}!")
             self._file.close()
             
-            # Try creating reading the auto-generated file
+            # Try reading the auto-generated file
             self._file = open(f"{self.get_file_name()}", mode="r")
 
             log(log_levels["info"], "File has been created automatically.")
